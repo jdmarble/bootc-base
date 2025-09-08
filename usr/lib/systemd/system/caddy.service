@@ -8,9 +8,9 @@ Type=notify
 User=caddy
 Group=caddy
 LoadCredentialEncrypted=caddy_credentials
-ExecStartPre=/usr/bin/caddy validate --envfile=%d/caddy_credentials --config /etc/caddy/Caddyfile
-ExecStart=/usr/bin/caddy run --envfile=%d/caddy_credentials --config /etc/caddy/Caddyfile
-ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
+ExecStartPre=/usr/bin/caddy validate --envfile=%d/caddy_credentials --config /usr/lib/caddy/Caddyfile
+ExecStart=/usr/bin/caddy run --envfile=%d/caddy_credentials --config /usr/lib/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /usr/lib/caddy/Caddyfile
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 PrivateTmp=true
