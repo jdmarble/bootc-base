@@ -12,8 +12,7 @@ COPY /etc/dnf /etc/dnf
 RUN dnf install \
     cockpit \
     nfs-utils \
-    && dnf clean all \
-    && rm -rf /var/cache/yum
+    && dnf clean all && rm -rf /var/log/* /var/cache /var/lib/{dnf,rpm-state,rhsm}
 
 # Automatically update quadlet managed container images.
 # Enable Caddy for reverse proxy.
@@ -28,8 +27,7 @@ RUN systemctl enable podman-auto-update.timer \
 COPY --from=caddy-builder /usr/bin/caddy /usr/bin/caddy
 
 # Copy system configuration later because this is where most changes will be made.
-COPY /etc/ /etc/
 COPY /usr/ /usr/
 
 # https://docs.fedoraproject.org/en-US/bootc/building-containers/#_linting
-RUN bootc container lint
+RUN bootc container lint --fatal-warnings
