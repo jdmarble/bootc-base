@@ -8,7 +8,7 @@ COPY /etc/dnf /etc/dnf
 
 # Install packages in an early layer because this is mostly stable.
 # cockpit: Remote management web UI
-# nfs-utils: To mount the media share over NFS
+# nfs-utils: To mount the persistent state over NFS
 RUN dnf install \
     cockpit \
     nfs-utils \
@@ -30,8 +30,6 @@ COPY --from=caddy-builder /usr/bin/caddy /usr/bin/caddy
 # Copy system configuration later because this is where most changes will be made.
 COPY /etc/ /etc/
 COPY /usr/ /usr/
-
-RUN systemctl enable caddy.service
 
 # https://docs.fedoraproject.org/en-US/bootc/building-containers/#_linting
 RUN bootc container lint
