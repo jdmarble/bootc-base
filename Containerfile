@@ -6,6 +6,10 @@ FROM quay.io/fedora/fedora-bootc:42
 # Configure package manager before installing packages.
 COPY /etc/dnf /etc/dnf
 
+# Disable analytics
+RUN sed -i -e s,countme=1,countme=0, /etc/yum.repos.d/*.repo \
+    && systemctl mask rpm-ostree-countme.timer
+
 # Install packages in an early layer because this is mostly stable.
 # cockpit: Remote management web UI
 # nfs-utils: To mount the persistent state over NFS
