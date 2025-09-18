@@ -17,7 +17,7 @@ I've chosen not to build them in CI.
 ### Prerequisites
 
 Clone this repository to a build system running Linux.
-Building on MacOS or WSL2 on Windows may also work, but may require some patches to the build scripts.
+Building on macOS or WSL2 on Windows may also work, but may require some patches to the build scripts.
 
 If you have [jetify devbox](https://www.jetify.com/devbox) and [direnv](https://direnv.net/) installed,
 simply run `direnv allow` to download the required tools and configure the build environment.

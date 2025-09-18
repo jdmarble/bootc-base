@@ -7,6 +7,7 @@ FROM quay.io/fedora/fedora-bootc:42
 COPY /etc/dnf /etc/dnf
 
 # Disable analytics
+# See https://docs.fedoraproject.org/en-US/bootc/counting/#_opting_out_of_counting
 RUN sed -i -e s,countme=1,countme=0, /etc/yum.repos.d/*.repo \
     && systemctl mask rpm-ostree-countme.timer
 
