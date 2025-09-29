@@ -1,1 +1,2 @@
+import /etc/caddy/Caddyfile.d/*.caddyfile
 import /usr/lib/caddy/Caddyfile.d/*.caddyfile
