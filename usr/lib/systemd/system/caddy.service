@@ -7,9 +7,8 @@ After=network.target
 Type=notify
 User=caddy
 Group=caddy
-LoadCredentialEncrypted=caddy_credentials
-ExecStartPre=/usr/bin/caddy validate --envfile=%d/caddy_credentials --config /usr/lib/caddy/Caddyfile
-ExecStart=/usr/bin/caddy run --envfile=%d/caddy_credentials --config /usr/lib/caddy/Caddyfile
+ExecStartPre=/usr/bin/caddy validate --config /usr/lib/caddy/Caddyfile
+ExecStart=/usr/bin/caddy run --config /usr/lib/caddy/Caddyfile
 ExecReload=/usr/bin/caddy reload --config /usr/lib/caddy/Caddyfile
 TimeoutStopSec=5s
 LimitNOFILE=1048576
