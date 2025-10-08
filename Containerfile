@@ -15,6 +15,7 @@ RUN sed -i -e s,countme=1,countme=0, /etc/yum.repos.d/*.repo \
 # cockpit: Remote management web UI
 # nfs-utils: To mount the persistent state over NFS
 RUN dnf install \
+    audit \
     cockpit \
     nfs-utils \
     && dnf clean all && rm -rf /var/log/* /var/cache /var/lib/{dnf,rpm-state,rhsm}
