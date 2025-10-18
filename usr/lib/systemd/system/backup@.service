@@ -1,0 +1,14 @@
+[Unit]
+Description=%I backup
+
+[Service]
+ReadOnlyPaths=/var/lib/%i
+ProtectSystem=strict
+User=%i
+Group=%i
+LoadCredentialEncrypted=%i_config
+ExecStart=/usr/sbin/rclone sync \
+  --config=%d/%i_config \
+  --check-first \
+  --verbose \
+  /var/lib/%i %i_config:/%i_config

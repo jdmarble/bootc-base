@@ -18,6 +18,7 @@ RUN dnf install \
     audit \
     cockpit \
     nfs-utils \
+    rclone \
     && dnf clean all && rm -rf /var/log/* /var/cache /var/lib/{dnf,rpm-state,rhsm}
 
 # Automatically update quadlet managed container images.
